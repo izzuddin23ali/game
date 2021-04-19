@@ -1,0 +1,29 @@
+.red{
+    background: red;
+    color: white;
+}
+
+.blue{
+    background: blue;
+    color: white;
+}
+
+/*rps*/
+
+#playerScoreScreen{
+    background: blue;
+    color: white;
+}
+
+#comScoreScreen{
+    background: red;
+    color:white;
+}
+
+#hands{
+    height: 50vh;
+}
+
+#rock, #paper, #scissors{
+    height: 25px;
+}
