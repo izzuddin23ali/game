@@ -8,6 +8,20 @@
     color: white;
 }
 
+.box{
+    height: 150px;
+}
+
+#box-2, #box-8, #box-5{
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+}
+
+#box-4, #box-5, #box-6{
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+}
+
 /*rps*/
 
 #playerScoreScreen{
@@ -25,5 +39,6 @@
 }
 
 #rock, #paper, #scissors{
-    height: 25px;
+    height: 25vh;
 }
+

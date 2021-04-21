@@ -11,3 +11,8 @@ var choseScissors = document.getElementById("scissors");
 playerScoreScreen.innerHTML =+ playerScore;
 comScoreScreen.innerHtml =+ comScore;
 
+
+
+function rps(){
+
+}
