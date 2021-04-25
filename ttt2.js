@@ -9,6 +9,8 @@ let redScoreScreen = document.getElementById("redScore")
 var blueScore = 0;
 var redScore = 0;
 
+let blueWin=false;
+
 turnScreen.classList.add("text-center", "blue");
 turnScreen.innerHTML = ("Player One's Turn");
 
@@ -26,23 +28,20 @@ boxes.forEach(function(box){
         }
         turnBox();
         checkWins();
-        //setTimeout(comTurn, 500);
     })
 })
 
 function checkWins(){
     if((boxes[0].classList.contains("blue")&&boxes[1].classList.contains("blue")&&boxes[2].classList.contains("blue"))||(boxes[3].classList.contains("blue")&&boxes[4].classList.contains("blue")&&boxes[5].classList.contains("blue"))||(boxes[6].classList.contains("blue")&&boxes[7].classList.contains("blue")&&boxes[8].classList.contains("blue"))||(boxes[0].classList.contains("blue")&&boxes[3].classList.contains("blue")&&boxes[6].classList.contains("blue"))||(boxes[1].classList.contains("blue")&&boxes[4].classList.contains("blue")&&boxes[7].classList.contains("blue"))||(boxes[2].classList.contains("blue")&&boxes[5].classList.contains("blue")&&boxes[8].classList.contains("blue"))||(boxes[0].classList.contains("blue")&&boxes[4].classList.contains("blue")&&boxes[8].classList.contains("blue"))||(boxes[2].classList.contains("blue")&&boxes[4].classList.contains("blue")&&boxes[6].classList.contains("blue"))){
         resultScreen.innerHTML = ("Blue wins");
+        resultScreen.classList.add("blue");
         blueScore++;
         blueScoreScreen.innerHTML = (blueScore);
-        resetBox();
+        blueWin=true;
     }
     else if((boxes[0].classList.contains("blue")||boxes[0].classList.contains("red"))&&(boxes[1].classList.contains("blue")||boxes[1].classList.contains("red"))&&(boxes[2].classList.contains("blue")||boxes[2].classList.contains("red"))&&(boxes[3].classList.contains("blue")||boxes[3].classList.contains("red"))&&(boxes[4].classList.contains("blue")||boxes[4].classList.contains("red"))&&(boxes[5].classList.contains("blue")||boxes[5].classList.contains("red"))&&(boxes[6].classList.contains("blue")||boxes[6].classList.contains("red"))&&(boxes[7].classList.contains("blue")||boxes[7].classList.contains("red"))&&(boxes[8].classList.contains("blue")||boxes[8].classList.contains("red"))){
         resultScreen.innerHTML = ("Draw");
         turnScreen.classList.add("text-center");
-        
-        
-        //resetBox();
     }
     else{
         setTimeout(comTurn, 750);
@@ -52,6 +51,7 @@ function checkWins(){
 function checkComWins(){
     if((boxes[0].classList.contains("red")&&boxes[1].classList.contains("red")&&boxes[2].classList.contains("red"))||(boxes[3].classList.contains("red")&&boxes[4].classList.contains("red")&&boxes[5].classList.contains("red"))||(boxes[6].classList.contains("red")&&boxes[7].classList.contains("red")&&boxes[8].classList.contains("red"))||(boxes[0].classList.contains("red")&&boxes[3].classList.contains("red")&&boxes[6].classList.contains("red"))||(boxes[1].classList.contains("red")&&boxes[4].classList.contains("red")&&boxes[7].classList.contains("red"))||(boxes[2].classList.contains("red")&&boxes[5].classList.contains("red")&&boxes[8].classList.contains("red"))||(boxes[0].classList.contains("red")&&boxes[4].classList.contains("red")&&boxes[8].classList.contains("red"))||(boxes[2].classList.contains("red")&&boxes[4].classList.contains("red")&&boxes[6].classList.contains("red"))){
         resultScreen.innerHTML = ("COM wins");
+        resultScreen.classList.add("red");
         redScore++;
         redScoreScreen.innerHTML = (redScore);
         resetBox();
@@ -65,26 +65,28 @@ function randomNum(){
 function comTurn(){
 
     if(turn===false){
+
         let chosen = false;
 
-    while(chosen === false){
+        while(chosen === false){
 
-        randomNum();
+            randomNum();
         
-        if((boxes[random].classList.contains("red"))||(boxes[random].classList.contains("blue"))){
-            chosen=false;
-        }
-        else if(boxes[random].classList.contains("white")){
-            boxes[random].classList.remove("white");
-            boxes[random].classList.add("red");
-            boxes[random].innerHTML = ("O");
-            chosen = true;
-        }
-    }
+            if((boxes[random].classList.contains("red"))||(boxes[random].classList.contains("blue"))){
+              chosen=false;
+            }
 
-    turn = true;
-    turnBox();
-    checkComWins();
+            else if(boxes[random].classList.contains("white")){
+                boxes[random].classList.remove("white");
+                boxes[random].classList.add("red");
+                boxes[random].innerHTML = ("O");
+                chosen = true;
+            }
+        }
+
+        turn = true;
+        turnBox();
+        checkComWins();
     }
 }
 
@@ -96,16 +98,48 @@ function resetBox(){
     }
     turn = true;
     turnBox();
+    resultScreen.innerHTML = "";
+    resultScreen.classList.remove("red", "blue");
 }
+
+function resetScore(){
+    redScore = 0;
+    blueScore = 0;
+    redScoreScreen.innerHTML = redScore;
+    blueScoreScreen.innerHTML = blueScore;
+}
+
+function turnBox(){
+    if(blueWin===true){
+        turnScreen.innerHTML = ("Blue win");
+        turnScreen.classList.add("text-center", "blue");
+        return;
+    }
+    else if(blueWin===false){
+        if(turn===true){
+            turnScreen.innerHTML = ("Player One's Turn");
+            turnScreen.classList.add("text-center", "blue");
+        }else if(turn===false){
+            turnScreen.classList.remove("blue");
+            turnScreen.innerHTML = ("COM's Turn");
+            turnScreen.classList.add("text-center", "red");
+        }
+    }
+}
+
+
+
+/*
 
 function turnBox(){
     if(turn===true){
         turnScreen.innerHTML = ("Player One's Turn");
         turnScreen.classList.add("text-center", "blue");
-        //turnScreen.innerClass.remove("red");
     }else if(turn===false){
         turnScreen.classList.remove("blue");
         turnScreen.innerHTML = ("COM's Turn");
         turnScreen.classList.add("text-center", "red");
     }
 }
+
+*/

@@ -8,8 +8,8 @@
     margin-bottom: 10vh;
 }
 
-.main-menu a{
-    text-decoration: none;
+#header{
+    cursor: pointer;
 }
 
 #overlay{
@@ -27,9 +27,10 @@
 
 #mode1{
     background-color:  #547AA5;
+    cursor: pointer;
 }
 
-#mode1 a{
+#mode1 h1{
     color: #CC8B8C;
 }
 
@@ -39,9 +40,10 @@
 
 #mode2{
     background-color: darkgoldenrod;
+    cursor: pointer;
 }
 
-#mode2 a{
+#mode2 h1{
     color: gold;
 }
 
@@ -49,15 +51,73 @@
     background-color: #BFBDC1;
 }
 
+.navi{
+    background-color: #D8DBE2;
+    cursor: pointer;
+}
+
+.navi-active{
+    background-color: #A9BCD0;
+    cursor: pointer;
+}
+
+/*dropdown*/
+
+.dropbtn{
+    background-color: #03B5AA;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+  
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #E8E9EB;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+#active-mode{
+    background-color: #646E68;
+    color: white;
+}
+  
+.dropdown-content a:hover{
+      background-color: #E0DFD5;
+}
+  
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+  
+.dropdown:hover .dropbtn{
+    background-color: #407076;
+}
+
 /*ttt*/
 
 .red{
-    background: red;
+    background-color: #F03A47;
     color: white;
 }
 
 .blue{
-    background: blue;
+    background: #1446A0;
     color: white;
 }
 
@@ -65,6 +125,23 @@
     height: 150px;
     padding: 50px;
     font-size: 35px;
+}
+
+.dashboard{
+    height: 40px;
+    padding: 5px;
+}
+
+#resultScreen, #reset{
+    height: 40px;
+}
+
+#resetBox, #resetScore{
+    cursor: pointer;
+}
+
+#resetBox button, #resetScore button{
+    width: 100%;
 }
 
 #box-2, #box-8, #box-5{
@@ -81,4 +158,6 @@
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
+    height: 40px;
+    padding: 5px;
 }

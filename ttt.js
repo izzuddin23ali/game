@@ -41,22 +41,19 @@ boxes.forEach(function(box){
 function checkWins(){
     if((boxes[0].classList.contains("blue")&&boxes[1].classList.contains("blue")&&boxes[2].classList.contains("blue"))||(boxes[3].classList.contains("blue")&&boxes[4].classList.contains("blue")&&boxes[5].classList.contains("blue"))||(boxes[6].classList.contains("blue")&&boxes[7].classList.contains("blue")&&boxes[8].classList.contains("blue"))||(boxes[0].classList.contains("blue")&&boxes[3].classList.contains("blue")&&boxes[6].classList.contains("blue"))||(boxes[1].classList.contains("blue")&&boxes[4].classList.contains("blue")&&boxes[7].classList.contains("blue"))||(boxes[2].classList.contains("blue")&&boxes[5].classList.contains("blue")&&boxes[8].classList.contains("blue"))||(boxes[0].classList.contains("blue")&&boxes[4].classList.contains("blue")&&boxes[8].classList.contains("blue"))||(boxes[2].classList.contains("blue")&&boxes[4].classList.contains("blue")&&boxes[6].classList.contains("blue"))){
         resultScreen.innerHTML = ("Blue wins");
+        resultScreen.classList.add("blue");
         blueScore++;
         blueScoreScreen.innerHTML = (blueScore);
-        resetBox();
     } 
     else if((boxes[0].classList.contains("red")&&boxes[1].classList.contains("red")&&boxes[2].classList.contains("red"))||(boxes[3].classList.contains("red")&&boxes[4].classList.contains("red")&&boxes[5].classList.contains("red"))||(boxes[6].classList.contains("red")&&boxes[7].classList.contains("red")&&boxes[8].classList.contains("red"))||(boxes[0].classList.contains("red")&&boxes[3].classList.contains("red")&&boxes[6].classList.contains("red"))||(boxes[1].classList.contains("red")&&boxes[4].classList.contains("red")&&boxes[7].classList.contains("red"))||(boxes[2].classList.contains("red")&&boxes[5].classList.contains("red")&&boxes[8].classList.contains("red"))||(boxes[0].classList.contains("red")&&boxes[4].classList.contains("red")&&boxes[8].classList.contains("red"))||(boxes[2].classList.contains("red")&&boxes[4].classList.contains("red")&&boxes[6].classList.contains("red"))){
         resultScreen.innerHTML = ("Red wins");
+        resultScreen.classList.add("red");
         redScore++;
         redScoreScreen.innerHTML = (redScore);
-        resetBox();
     }
     else if((boxes[0].classList.contains("blue")||boxes[0].classList.contains("red"))&&(boxes[1].classList.contains("blue")||boxes[1].classList.contains("red"))&&(boxes[2].classList.contains("blue")||boxes[2].classList.contains("red"))&&(boxes[3].classList.contains("blue")||boxes[3].classList.contains("red"))&&(boxes[4].classList.contains("blue")||boxes[4].classList.contains("red"))&&(boxes[5].classList.contains("blue")||boxes[5].classList.contains("red"))&&(boxes[6].classList.contains("blue")||boxes[6].classList.contains("red"))&&(boxes[7].classList.contains("blue")||boxes[7].classList.contains("red"))&&(boxes[8].classList.contains("blue")||boxes[8].classList.contains("red"))){
         resultScreen.innerHTML = ("Draw");
         turnScreen.classList.add("text-center");
-        
-        
-        //resetBox();
     }
 }
 
@@ -68,13 +65,21 @@ function resetBox(){
     }
     turn = true;
     turnBox();
+    resultScreen.innerHTML= "";
+    resultScreen.classList.remove("blue", "red");
+}
+
+function resetScore(){
+    redScore = 0;
+    blueScore = 0;
+    redScoreScreen.innerHTML = redScore;
+    blueScoreScreen.innerHTML = blueScore;
 }
 
 function turnBox(){
     if(turn===true){
         turnScreen.innerHTML = ("Player One's Turn");
         turnScreen.classList.add("text-center", "blue");
-        //turnScreen.innerClass.remove("red");
     }else if(turn===false){
         turnScreen.classList.remove("blue");
         turnScreen.innerHTML = ("Player Two's Turn");
