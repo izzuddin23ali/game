@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scuffed Tic Tac Toe</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a438f2b6d9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!--nav-->
+
+        <div class="row mt-4 mb-4">
+
+            <div class="col-lg-6 m-auto">
+
+                <div class="row">
+
+                    <div class="col-lg-7" id="header" onclick="location.href='index.html';">
+
+                        <h3>Scuffed Tic Tac Toe <small>[VS COM]</small></h3>
+
+                    </div>
+
+                    <div class="col-lg-5 d-flex justify-content-end">
+
+                        <div class="dropdown">
+
+                            <button class="dropbtn">Change modes</button>
+
+                            <div class="dropdown-content">
+
+                              <a href="tictactoe.html">VS P2</a>
+
+                              <a id="active-mode" href="tictactoe2.html">VS COM</a>
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--dashboard-->
+
+        <div class="row">
+
+            <div class="col-lg-6 m-auto mb-5 text-center">
+
+                <!--score screen-->
+
+                <div class="row mb-3 d-flex justify-content-between">
+
+                    <!--left score-->
+
+                    <div class="col-lg-3 col-sm-12 col-12">
+
+                        <div class="row">
+
+                            <div class="col-lg-12 col-sm-12 col-12 text-center blue dashboard">
+
+                                <h6>P1 Score</h6>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-12 text-center" id="blueScore">
+
+                                <p>0</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--middle screen-->
+
+                    <div class="col-lg-5">
+
+                        <div class="row">
+
+                            <div class="col-lg-12 dashboard" id="resultScreen">
+
+                                <!--shows results-->
+
+                            </div>
+
+                            <div class="col-lg-12"  id="reset">
+
+                                <div class="row pt-1">
+
+                                    <div class="col-lg-6" onclick="resetBox()" id="resetBox">
+
+                                        <button onclick="resetBox()">Reset Board</button>
+
+                                    </div>
+
+                                    <div class="col-lg-6" onclick="resetScore()" id="resetScore">
+
+                                        <button onclick="resetScore()">Reset Score</button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--right score-->
+
+                    <div class="col-lg-3">
+
+                        <div class="row">
+
+                            <div class="col-lg-12 text-center red dashboard">
+
+                                <h6>COM SCORE</h6>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-12 text-center" id="redScore">
+
+                                <p>0</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--turn screen-->
+
+                <div class="row mt-4">
+
+                    <div class="col-lg-12 text-center" id="turnScreen">
+
+                        <!--shows turn-->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--tictactoe box-->
+
+        <div class="row mb-5 text-center">
+
+            <div class="col-lg-6 m-auto">
+
+                <div class="row">
+
+                    <div class="col-lg-4 white box" id="box-1">
+                    </div>
+
+                    <div class="col-lg-4 white box" id="box-2">
+                    </div>
+
+                    <div class="col-lg-4 white box" id="box-3">
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4 white box" id="box-4">
+                    </div>
+
+                    <div class="col-lg-4 white box" id="box-5">
+                    </div>
+
+                    <div class="col-lg-4 white box" id="box-6">
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4 white box" id="box-7">
+                    </div>
+
+                    <div class="col-lg-4 white box" id="box-8">
+                    </div>
+
+                    <div class="col-lg-4 white box" id="box-9">
+                    </div>
+
+                </div>
+
+                <!--red wins overlay-->
+
+                <div class="red" id="redOverlay" onclick="resetBox()">
+                    <div>
+                        <h3>Red Wins</h3>
+                        <h5>click to play again</h5>
+                    </div>
+                    
+                </div>
+
+                <!--blue wins overlay-->
+
+                <div class="blue" id="blueOverlay" onclick="resetBox()">
+                    <div>
+                        <h3>Blue wins</h3>
+                        <h5>click to play again</h5>
+                    </div>
+                </div>
+
+                <!--draw overlay-->
+
+                <div id="drawOverlay" onclick="resetBox()">
+                    <div>
+                        <h3>Draw</h3>
+                        <h5>click to play again</h5>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--guidelines-->
+
+        <div class="row text-left">
+
+            <div class="col-lg-6 m-auto text-justify">
+
+                <h6><strong>HOW TO PLAY</strong></h6>
+
+                <hr>
+                
+                <ol>
+
+                    <li>The game is played on a grid that is 3x3</li>
+                    <li>One player will play X while the other will play O. Each will mark a box every turn, followed by the other.</li>
+                    <li>One player will win when three boxes are marked in a line, either horizontally, vertically or diagonally, with the same characters by the same player.</li>
+
+                </ol>
+
+            </div>
+
+        </div>
+
+        <!--winning conditions example-->
+
+        <div class="row mt-3">
+
+            <div class="col-lg-6 m-auto text-center">
+
+                <h6><underline>Examples of winning conditions</underline></h6>
+
+                <img src="img/win.png" alt="Winning condition">
+
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+
+<script src="ttt2.js"></script>
+
+</html>
